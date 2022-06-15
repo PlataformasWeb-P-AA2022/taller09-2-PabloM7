@@ -18,10 +18,10 @@ class Jugador(models.Model):
     posicion = models.CharField(max_length=30)
     numero = models.IntegerField("numero de jugador")
     sueldo = models.IntegerField("sueldo de jugador")
-    equipo = models.ForeignKey(Equipo, related_name='jugadores',on_delete=models.CASCADE)
+    equipo = models.ForeignKey(Equipo, related_name='jugador',on_delete=models.CASCADE)
 
     def __str__(self):
-        return "%s | %s | numero: %d | sueldo: %d - %s" % (self.nombre_j, 
+        return "%s | %s | numero: %d | sueldo: %d | %s" % (self.nombre_j, 
                 self.posicion,
                 self.numero,
                 self.sueldo, 
@@ -37,8 +37,8 @@ class Campeonato(models.Model):
 
 class C_equipos(models.Model):
     año = models.IntegerField("Año")
-    equipo = models.ForeignKey(Equipo, related_name='equipos',on_delete=models.CASCADE)
-    campeonato = models.ForeignKey(Campeonato, related_name='campeonato', on_delete=models.CASCADE)
+    equipo = models.ForeignKey(Equipo, related_name='c_equipos',on_delete=models.CASCADE)
+    campeonato = models.ForeignKey(Campeonato, related_name='c_equipos', on_delete=models.CASCADE)
 
     def __str__(self):
         return "año: %d | %s | %s" % (self.año, 
